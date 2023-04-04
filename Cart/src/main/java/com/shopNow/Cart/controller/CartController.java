@@ -22,14 +22,14 @@ public class CartController {
 	@Autowired
 	private Cartservice cartService;
 
-	@GetMapping("/add")
+	@PostMapping("/add")
 	public Map<String,Object> addToCart(@RequestParam Long productId,@RequestParam String userName) {
 		Map<String,Object> map= new HashMap<>(); 
 		map.put("msg", cartService.addToCart(productId,userName));
 		return map;
 	}
 	
-	@PostMapping("addCartItems")
+	@GetMapping("/getCartItems")
 	public List<Cart> getCartItemsByUser(@RequestParam String userName){
 		return cartService.getCartItemsByUser(userName);
 	}
